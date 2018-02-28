@@ -8,6 +8,8 @@ public class ClienteService {
 
 	public void salvar(Cliente cliente) {
 		
+		
+		
 		Dao<Cliente> clienteDao = new ClienteDao();
 				clienteDao.salvar(cliente);
 		
