@@ -4,6 +4,7 @@ public class Plano {
 
 	private Integer id;
 	private String nome;
+	private Integer QtdDom;
 	
 	public Integer getId() {
 		return id;
@@ -16,6 +17,12 @@ public class Plano {
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+	public Integer getQtdDom() {
+		return QtdDom;
+	}
+	public void setQtdDom(Integer qtdDom) {
+		QtdDom = qtdDom;
 	}
 	
 	

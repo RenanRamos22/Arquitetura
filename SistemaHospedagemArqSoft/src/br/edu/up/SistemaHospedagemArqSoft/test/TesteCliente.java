@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import br.edu.up.SistemaHospedagemArqSoft.entity.Cliente;
 import br.edu.up.SistemaHospedagemArqSoft.service.ClienteService;
+import br.edu.up.SistemaHospedagemArqSoft.service.ServiceException;
 
 /*ATIVIDADE
  * 
@@ -17,12 +18,18 @@ public class TesteCliente {
 
 	@Test
 	public void deveriaCriarCliente() {
+		
 	Cliente c = new Cliente();
 	c.setId(null);
 	c.setNome("Renan");
 	c.setDominio("teste.com.br");
 	
-	new ClienteService().salvar(c);
+	try {
+		new ClienteService().salvar(c);
+	} catch (ServiceException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 	
 	 assertEquals(true,c.getId() != null);
 	}

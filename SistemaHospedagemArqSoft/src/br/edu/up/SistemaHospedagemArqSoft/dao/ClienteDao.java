@@ -9,7 +9,7 @@ public class ClienteDao implements Dao<Cliente>{
 	@Override
 	public void salvar(Cliente t) {
 		// TODO Auto-generated method stub
-		
+		t.setId(1);
 	}
 
 	@Override
