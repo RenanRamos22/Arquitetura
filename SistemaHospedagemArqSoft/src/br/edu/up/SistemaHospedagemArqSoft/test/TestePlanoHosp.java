@@ -15,7 +15,7 @@ public class TestePlanoHosp {
 		
 		Plano p = new Plano();
 		p.setId(null);
-		p.setNome("Renan");
+		p.setNome("Basico");
 		p.setQtdDom(1);
 		
 		try {

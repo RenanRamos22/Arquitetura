@@ -1,11 +1,20 @@
 package br.edu.up.SistemaHospedagemArqSoft.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="TICKET")
 public class Ticket {
 
-	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
 	private String assunto;
-	private Cliente cliente;
+	//private Cliente cliente;
 	private String setor;
 	private String status;
 	
@@ -21,12 +30,12 @@ public class Ticket {
 	public void setAssunto(String assunto) {
 		this.assunto = assunto;
 	}
-	public Cliente getCliente() {
-		return cliente;
-	}
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
-	}
+//	public Cliente getCliente() {
+//		return cliente;
+//	}
+//	public void setCliente(Cliente cliente) {
+//		this.cliente = cliente;
+//	}
 	public String getSetor() {
 		return setor;
 	}

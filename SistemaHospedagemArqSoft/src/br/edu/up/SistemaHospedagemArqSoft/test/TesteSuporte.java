@@ -14,13 +14,13 @@ public class TesteSuporte {
 	@Test
 	public void DeveriaCriarTicket() {
 		
-		Cliente c =new Cliente();
-		c.setDominio("teste.com.br");
-		c.setNome("Tadeu");
-		c.setId(666);
+//		Cliente c =new Cliente();
+//		c.setDominio("teste.com.br");
+//		c.setNome("Tadeu");
+//		c.setId(666);
 		Ticket t = new Ticket();
 		t.setId(null);
-		t.setCliente(c);
+	//	t.setCliente(c);
 		t.setAssunto("dados de Acesso");
 		t.setSetor("Tecnico");
 		
