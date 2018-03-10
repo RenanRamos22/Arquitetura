@@ -8,4 +8,5 @@ public interface Dao<T> {
 	public void alterar(T t);
 	public void excluir(T t);
 	public List<T> listar();
+	public T buscar(Integer id);
 }

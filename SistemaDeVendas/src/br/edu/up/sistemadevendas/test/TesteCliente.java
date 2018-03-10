@@ -17,12 +17,12 @@ public class TesteCliente {
 		
 		Cliente c = new Cliente();
 		c.setId(null);
-		c.setNome("Renan");
-		c.setIdade(24);
+		c.setNome("Teste2");
+		c.setIdade(30);
 		
 		try {
 		//	new ClienteService().salvar(c);
-			new VendasFacade().salvarClienteFacade(c);	
+			new VendasFacade().salvarCliente(c);	
 			
 		} catch (ServiceException e) {
 			e.printStackTrace();
@@ -38,7 +38,7 @@ public class TesteCliente {
 		
 		try {
 			//new ClienteService().salvar(c);
-			new VendasFacade().salvarClienteFacade(c);
+			new VendasFacade().salvarCliente(c);
 			
 		} catch (ServiceException e) {
 			//e.printStackTrace();

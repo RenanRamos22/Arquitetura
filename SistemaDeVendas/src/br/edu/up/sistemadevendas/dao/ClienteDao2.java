@@ -10,7 +10,7 @@ public class ClienteDao2 implements Dao<Cliente>{
 	
 	@Override
 	public void salvar(Cliente t) {
-		EntityManager em = new Conexao().getInstance();
+		EntityManager em = new Conexao().getInstance().createEntityManager();
 
 		em.getTransaction().begin();
 		

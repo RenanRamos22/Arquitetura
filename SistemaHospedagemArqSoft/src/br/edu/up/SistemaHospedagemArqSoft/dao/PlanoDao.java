@@ -11,7 +11,7 @@ public class PlanoDao implements Dao<Plano> {
 	@Override
 	public void salvar(Plano t) {
 		// TODO Auto-generated method stub
-		EntityManager em = Conexao.getInstance();
+		EntityManager em = new Conexao().getInstance();
 		em.getTransaction().begin();
 		em.persist(t);
 		em.getTransaction().commit();
@@ -35,5 +35,13 @@ public class PlanoDao implements Dao<Plano> {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public Plano buscar(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
 
 }

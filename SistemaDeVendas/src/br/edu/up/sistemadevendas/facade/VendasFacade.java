@@ -12,7 +12,7 @@ private ClienteService cService;
 		this.cService = new ClienteService();
 	}
 	
-	public void salvarClienteFacade(Cliente c) throws ServiceException { 
+	public void salvarCliente(Cliente c) throws ServiceException { 
 		
 		cService.salvar(c);
 	}
