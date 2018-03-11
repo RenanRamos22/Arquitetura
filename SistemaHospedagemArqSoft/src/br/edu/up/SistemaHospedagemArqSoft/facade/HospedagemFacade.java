@@ -49,4 +49,20 @@ public class HospedagemFacade {
 		// TODO Auto-generated method stub
 		return cliService.listar();
 	}
+
+	public Plano buscarPlano(Integer id) {
+		// TODO Auto-generated method stub
+		return planService.buscar(id);
+	}
+
+	public void alterarPlano(Plano p) throws ServiceException{
+		planService.alterar(p); 
+		
+		
+	}
+
+	public List<Plano> listarPlano() {
+		// TODO Auto-generated method stub
+		return planService.listar();
+	}
 }

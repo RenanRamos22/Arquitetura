@@ -2,14 +2,10 @@ package br.edu.up.SistemaHospedagemArqSoft.test;
 
 import static org.junit.Assert.assertEquals;
 
-import java.io.Console;
 import java.util.List;
-
 import org.junit.Test;
-
 import br.edu.up.SistemaHospedagemArqSoft.entity.Cliente;
 import br.edu.up.SistemaHospedagemArqSoft.facade.HospedagemFacade;
-import br.edu.up.SistemaHospedagemArqSoft.service.ClienteService;
 import br.edu.up.SistemaHospedagemArqSoft.service.ServiceException;
 
 /*ATIVIDADE
