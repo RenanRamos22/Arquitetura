@@ -1,17 +1,16 @@
 package br.edu.up.SistemaHospedagemArqSoft.test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.math.BigDecimal;
+import java.util.List;
 
 import org.junit.Test;
 
-import br.edu.up.SistemaHospedagemArqSoft.entity.Cliente;
+
 import br.edu.up.SistemaHospedagemArqSoft.entity.Servico;
 import br.edu.up.SistemaHospedagemArqSoft.facade.HospedagemFacade;
 import br.edu.up.SistemaHospedagemArqSoft.service.ServiceException;
-import br.edu.up.SistemaHospedagemArqSoft.service.ServicoService;
+
 
 public class TesteServico {
 	
@@ -20,6 +19,7 @@ public class TesteServico {
 	@Test
 	public void DeveriaCriarServico() {
 		
+		System.out.println("---ENTROU NO CRIAR---");
 
 		Servico t = new Servico();
 		t.setId(null);
@@ -42,21 +42,61 @@ public class TesteServico {
 	
 	@Test
 	public void deveriaAlterarServico() {
+		
+		System.out.println("---ENTROU NO ALTERAR---");
+		
 		HospedagemFacade s = new HospedagemFacade();
-		Cliente c = s.buscarCliente(id);
-		c.setNome("alterou nome");
-		c.setDominio("teste.com.br");
+		Servico serv = s.buscarServico(id);
+		serv.setNome("Nome do servico alterado");
+		serv.setValor(20.00);
+		serv.setDescricao("outra descricao");
 		
 		try {
 			//new ClienteService().salvar(c);
-			new HospedagemFacade().alterarCliente(c);
+			new HospedagemFacade().alterarServico(serv);
 		} catch (ServiceException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-			id = c.getId();
-			System.out.println(c.getNome());
-		 assertEquals(true,c.getId() != null);
+			id = serv.getId();
+			System.out.println("servico com id: "+serv.getId()+" alterou o nome para: "+serv.getNome());
+		 assertEquals(true,serv.getId() != null);
 		}
+	
+	@Test
+	public void deveriaListarServico() {
+		
+		System.out.println("---ENTROU NO lISTAR---");
+		
+		HospedagemFacade s = new HospedagemFacade();
+		List<Servico> servicos = s.listarServico();
+		
+		System.out.println("Listando Servicos:");
+		for(Servico ser: servicos) {
+			System.out.println("Id: "+ser.getId()+" - Nome: "+ser.getNome());
+		}
+		
+		assertEquals(true, servicos.size() > 0);	
+			
+	}
+	
+	@Test
+	public void deveriaExcluirCliente() {
+		
+		System.out.println("---ENTROU NO EXCLUIR:---");
+		
+		HospedagemFacade s = new HospedagemFacade();
+		Servico serv = s.buscarServico(id);
+		
+		try {
+			System.out.println("excluiu: "+serv.getNome());
+		new HospedagemFacade().excluirServico(serv);
+		}catch (ServiceException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		
+		assertEquals(false, s.buscarServico(id));
+	}
 }

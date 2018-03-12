@@ -33,7 +33,11 @@ public class ClienteDao implements Dao<Cliente>{
 
 	@Override
 	public void excluir(Cliente t) {
-		// TODO Auto-generated method stub
+		EntityManager em = new Conexao().getInstance();
+		em.getTransaction().begin();
+		Cliente cliente = em.find(Cliente.class, t.getId());		
+		em.remove(cliente);
+		em.getTransaction().commit();
 		
 	}
 

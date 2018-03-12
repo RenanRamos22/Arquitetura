@@ -35,4 +35,9 @@ public class ClienteService {
 		
 		return clienteDao.listar();
 	}
+
+	public void excluir(Cliente c) throws ServiceException{
+		clienteDao.excluir(c);
+		
+	}
 }

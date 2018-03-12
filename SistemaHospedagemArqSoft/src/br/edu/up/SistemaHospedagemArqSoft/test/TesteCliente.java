@@ -21,10 +21,11 @@ public class TesteCliente {
 	
 	@Test
 	public void deveriaCriarCliente() {
+		System.out.println("---ENTROU NO CRIAR---");
 		
 	Cliente c = new Cliente();
 	c.setId(null);
-	c.setNome("Deu boa filhaaaaaaao");
+	c.setNome("Renan");
 	c.setDominio("teste.com.br");
 	
 	try {
@@ -37,13 +38,15 @@ public class TesteCliente {
 	
 		id = c.getId();
 	 assertEquals(true,c.getId() != null);
+	 
 	}
 	
 	@Test
 	public void deveriaAlterarCliente() {
+		System.out.println("---ENTROU NO ALTERAR---");
 		HospedagemFacade s = new HospedagemFacade();
 		Cliente c = s.buscarCliente(id);
-		c.setNome("alterou nome");
+		c.setNome("outro");
 		c.setDominio("teste.com.br");
 		
 		try {
@@ -54,23 +57,46 @@ public class TesteCliente {
 			e.printStackTrace();
 		}
 		
-			id = c.getId();
-			System.out.println(c.getNome());
+			
+			System.out.println("cliente com id: "+c.getId()+" alterou o nome para: "+c.getNome());
 		 assertEquals(true,c.getId() != null);
+		 
 		}
 	
 
 	@Test
 	public void deveriaListarClientes() {
 		
+		System.out.println("---ENTROU NO lISTAR---");
+		
 		HospedagemFacade s = new HospedagemFacade();
 		List<Cliente> clientes = s.listar();
 		
+		System.out.println("Listando clientes:");
 		for(Cliente cli: clientes) {
-			System.out.println(cli.getNome());
+			System.out.println("Id: "+cli.getId()+" - Nome: "+cli.getNome());
 		}
 		
 		assertEquals(true, clientes.size() > 0);	
+			deveriaAlterarCliente();
+	}
+	
+	@Test
+	public void deveriaExcluirCliente() {
+		
+		System.out.println("---ENTROU NO EXCLUIR:---");
+		HospedagemFacade s = new HospedagemFacade();
+		Cliente c = s.buscarCliente(id);
+	
+		try {
+			System.out.println("excluiu: "+c.getNome()+" - id: "+c.getId());
+		new HospedagemFacade().excluirCliente(c);
+		}catch (ServiceException e) {
 			
+			e.printStackTrace();
+		}
+		
+		assertEquals(false, s.buscarCliente(c.getId()));
+		
 	}
 }

@@ -65,4 +65,28 @@ public class HospedagemFacade {
 		// TODO Auto-generated method stub
 		return planService.listar();
 	}
+
+	public Servico buscarServico(Integer id) {
+		// TODO Auto-generated method stub
+		return servService.buscar(id);
+	}
+
+	public void alterarServico(Servico serv) throws ServiceException{
+		servService.alterar(serv); 
+		// TODO Auto-generated method stub
+		
+	}
+	public List<Servico> listarServico() {
+		// TODO Auto-generated method stub
+		return servService.listar();
+	}
+
+	public void excluirCliente(Cliente c) throws ServiceException{
+		cliService.excluir(c);
+	}
+
+	public void excluirServico(Servico serv) throws ServiceException{
+		servService.excluir(serv);
+		
+	}
 }
