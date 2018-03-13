@@ -15,8 +15,12 @@ import br.edu.up.SistemaHospedagemArqSoft.service.ServiceException;
 public class TestePlanoHosp {
 
 	static Integer id;
+	
+
 	@Test
 	public void DeveriaCriarPlano() {
+		
+		System.out.println("-- ENTROU NO CRIAR --");
 		
 		Plano p = new Plano();
 		p.setId(null);
@@ -38,6 +42,9 @@ public class TestePlanoHosp {
 	
 	@Test
 	public void deveriaAlterarPlano() {
+		
+		System.out.println("-- ETROU NO ALTERAR --");
+		
 		HospedagemFacade s = new HospedagemFacade();
 		Plano p = s.buscarPlano(id);
 		p.setNome("mais um");
@@ -59,13 +66,10 @@ public class TestePlanoHosp {
 	@Test
 	public void deveriaListarPlano() {
 		
+		System.out.println("-- ENTROU NO LISTAR --");
+		
 		HospedagemFacade s = new HospedagemFacade();
 		List<Plano> planos = s.listarPlano();
-		
-//		for(int i = 0; i <= planos.size();i++) {
-//			
-//			System.out.println(planos. .getNome());
-//		}
 		
 		for(Plano pla : planos) {
 			System.out.println(pla.getNome());
@@ -73,5 +77,27 @@ public class TestePlanoHosp {
 		assertEquals(true, planos.size() > 0);	
 			
 	}
+	
+	@Test
+	public void deveriaExcluirPlano() {
+		
+		System.out.println("-- ENTROU NO EXCLUIR --");
+		
+		HospedagemFacade s = new HospedagemFacade();
+		Plano p = s.buscarPlano(16);
+		
+		try {
+			System.out.println("excluiu: "+p.getNome()+" - id: "+p.getId());
+			
+			new HospedagemFacade().excluirPlano(p);
+		} catch (ServiceException e) {
+			e.printStackTrace();
+		}
+		
+		//verifica no banco se o id setado la em cima ainda existe, se existir é porque não foi excluido
+		assertEquals(true, s.buscarPlano(p.getId()) == null);
+	}
+	
+	
 	
 }

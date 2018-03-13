@@ -45,7 +45,7 @@ public class ServicoDao implements Dao<Servico> {
 	public List<Servico> listar() {
 		
 		EntityManager em = new Conexao().getInstance();
-		Query q = em.createQuery("select c from Cliente c");
+		Query q = em.createQuery("select s from Servico s");
 		return q.getResultList();
 	}
 

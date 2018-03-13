@@ -24,7 +24,7 @@ public class TesteServico {
 		Servico t = new Servico();
 		t.setId(null);
 	    
-		t.setNome("Dominio adicional2");
+		t.setNome("SSL 2");
 	    t.setValor(15.00);
 		t.setDescricao("mais um dominio");
 		
@@ -47,7 +47,7 @@ public class TesteServico {
 		
 		HospedagemFacade s = new HospedagemFacade();
 		Servico serv = s.buscarServico(id);
-		serv.setNome("Nome do servico alterado");
+		serv.setNome("registro de dominio");
 		serv.setValor(20.00);
 		serv.setDescricao("outra descricao");
 		
@@ -73,6 +73,7 @@ public class TesteServico {
 		List<Servico> servicos = s.listarServico();
 		
 		System.out.println("Listando Servicos:");
+		
 		for(Servico ser: servicos) {
 			System.out.println("Id: "+ser.getId()+" - Nome: "+ser.getNome());
 		}
@@ -86,17 +87,19 @@ public class TesteServico {
 		
 		System.out.println("---ENTROU NO EXCLUIR:---");
 		
+		
 		HospedagemFacade s = new HospedagemFacade();
-		Servico serv = s.buscarServico(id);
+		
+		Servico serv = s.buscarServico(1);
 		
 		try {
-			System.out.println("excluiu: "+serv.getNome());
+			System.out.println("excluiu: Id: "+serv.getId()+" - Nome: "+serv.getNome());
 		new HospedagemFacade().excluirServico(serv);
 		}catch (ServiceException e) {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
-		
-		assertEquals(false, s.buscarServico(id));
+		id = serv.getId();
+		assertEquals(true, s.buscarServico(serv.getId()) == null);
 	}
 }

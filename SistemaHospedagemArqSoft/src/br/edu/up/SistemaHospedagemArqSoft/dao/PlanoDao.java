@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import br.edu.up.SistemaHospedagemArqSoft.entity.Plano;
+import br.edu.up.SistemaHospedagemArqSoft.entity.Servico;
 
 public class PlanoDao implements Dao<Plano> {
 
@@ -29,7 +30,11 @@ public class PlanoDao implements Dao<Plano> {
 
 	@Override
 	public void excluir(Plano t) {
-		// TODO Auto-generated method stub
+		EntityManager em = new Conexao().getInstance();
+		em.getTransaction().begin();
+		Plano serv = em.find(Plano.class, t.getId());		
+		em.remove(serv);
+		em.getTransaction().commit();
 
 	}
 

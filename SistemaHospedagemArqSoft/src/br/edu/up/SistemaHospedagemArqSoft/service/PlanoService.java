@@ -33,4 +33,9 @@ public class PlanoService {
 		// TODO Auto-generated method stub
 		return planoDao.listar();
 	}
+
+	public void excluir(Plano p) throws ServiceException{
+		planoDao.excluir(p);
+		
+	}
 }
