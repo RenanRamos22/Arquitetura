@@ -17,6 +17,13 @@ public class TesteServico {
 	static Integer id;
 	
 	@Test
+	public void deveriaGerenciarServico() {
+		DeveriaCriarServico();
+		deveriaAlterarServico();
+		deveriaListarServico();
+		deveriaExcluirServico();
+	}
+	
 	public void DeveriaCriarServico() {
 		
 		System.out.println("---ENTROU NO CRIAR---");
@@ -40,7 +47,7 @@ public class TesteServico {
 		assertEquals(true, t.getId() != null);
 	}
 	
-	@Test
+	
 	public void deveriaAlterarServico() {
 		
 		System.out.println("---ENTROU NO ALTERAR---");
@@ -64,7 +71,7 @@ public class TesteServico {
 		 assertEquals(true,serv.getId() != null);
 		}
 	
-	@Test
+	
 	public void deveriaListarServico() {
 		
 		System.out.println("---ENTROU NO lISTAR---");
@@ -82,8 +89,8 @@ public class TesteServico {
 			
 	}
 	
-	@Test
-	public void deveriaExcluirCliente() {
+	
+	public void deveriaExcluirServico() {
 		
 		System.out.println("---ENTROU NO EXCLUIR:---");
 		

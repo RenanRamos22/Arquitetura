@@ -18,7 +18,15 @@ public class TestePlanoHosp {
 	
 
 	@Test
-	public void DeveriaCriarPlano() {
+	public void deveriaGerenciarUmPlano() {
+		DeveriaCriarPlano();
+		deveriaAlterarPlano();
+		deveriaListarPlano();
+		deveriaExcluirPlano();	
+	}
+	
+	
+    public void DeveriaCriarPlano() {
 		
 		System.out.println("-- ENTROU NO CRIAR --");
 		
@@ -30,7 +38,11 @@ public class TestePlanoHosp {
 		try {
 			//new PlanoService().salvar(p);
 			new HospedagemFacade().salvarPlano(p);
-			System.out.println(p.getNome());
+			
+			System.out.println("");
+			System.out.println("Criou: "+p.getNome());
+			System.out.println("");
+			
 		} catch (ServiceException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -40,10 +52,10 @@ public class TestePlanoHosp {
 		
 	}
 	
-	@Test
+	
 	public void deveriaAlterarPlano() {
 		
-		System.out.println("-- ETROU NO ALTERAR --");
+		System.out.println("-- ENTROU NO ALTERAR --");
 		
 		HospedagemFacade s = new HospedagemFacade();
 		Plano p = s.buscarPlano(id);
@@ -58,12 +70,14 @@ public class TestePlanoHosp {
 		}
 		
 			id = p.getId();
-			System.out.println(p.getNome());
+			System.out.println("");
+			System.out.println("Nome: "+p.getNome());
+			System.out.println("");
 		 assertEquals(true,p.getId() != null);
 		}
 	
 
-	@Test
+	
 	public void deveriaListarPlano() {
 		
 		System.out.println("-- ENTROU NO LISTAR --");
@@ -72,22 +86,28 @@ public class TestePlanoHosp {
 		List<Plano> planos = s.listarPlano();
 		
 		for(Plano pla : planos) {
-			System.out.println(pla.getNome());
+			
+			System.out.println("Id: "+pla.getId()+" Nome: "+pla.getNome());
+			
 		}
+		System.out.println("");
+		
 		assertEquals(true, planos.size() > 0);	
 			
 	}
 	
-	@Test
+	
 	public void deveriaExcluirPlano() {
 		
 		System.out.println("-- ENTROU NO EXCLUIR --");
 		
 		HospedagemFacade s = new HospedagemFacade();
-		Plano p = s.buscarPlano(16);
+		Plano p = s.buscarPlano(66);
 		
 		try {
+			System.out.println("");
 			System.out.println("excluiu: "+p.getNome()+" - id: "+p.getId());
+			System.out.println("");
 			
 			new HospedagemFacade().excluirPlano(p);
 		} catch (ServiceException e) {
@@ -96,6 +116,7 @@ public class TestePlanoHosp {
 		
 		//verifica no banco se o id setado la em cima ainda existe, se existir é porque não foi excluido
 		assertEquals(true, s.buscarPlano(p.getId()) == null);
+		
 	}
 	
 	
