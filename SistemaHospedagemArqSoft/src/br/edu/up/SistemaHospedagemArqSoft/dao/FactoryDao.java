@@ -6,6 +6,7 @@ import br.edu.up.SistemaHospedagemArqSoft.entity.Servico;
 
 public class FactoryDao {
 
+	//Construtores factory method
 	public static Dao<Cliente> createClienteDao(){
 		return new ClienteDao();
 	}
