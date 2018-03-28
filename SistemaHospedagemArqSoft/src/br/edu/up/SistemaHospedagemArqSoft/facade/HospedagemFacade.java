@@ -16,6 +16,7 @@ public class HospedagemFacade {
 	private PlanoService planService;
 	private ServicoService servService;
 	
+	//construtor
 	public HospedagemFacade() {
 		this.cliService = new ClienteService();
 		this.planService = new PlanoService();
