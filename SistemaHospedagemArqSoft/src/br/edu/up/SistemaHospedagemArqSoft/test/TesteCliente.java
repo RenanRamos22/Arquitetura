@@ -108,7 +108,8 @@ public class TesteCliente {
 		System.out.println("---ENTROU NO EXCLUIR:---");
 		
 		HospedagemFacade s = new HospedagemFacade();
-		Cliente c = s.buscarCliente(6);
+		Cliente c = s.buscarCliente(id);
+		
 	
 		try {
 			System.out.println("excluiu: "+c.getNome()+" - id: "+c.getId());
@@ -120,7 +121,7 @@ public class TesteCliente {
 			e.printStackTrace();
 		}
 		
-		assertEquals(true, s.buscarCliente(c.getId()) == null);
+		assertEquals(true, s.buscarCliente(id) == null);
 		
 	}
 }

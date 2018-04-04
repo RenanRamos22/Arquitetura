@@ -28,7 +28,11 @@ public class PlanosRest {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void salvar (Plano plano) {
 		try {
+			if(plano.getId() == null) {
 			new HospedagemFacade().salvarPlano(plano);
+			} else {
+				new HospedagemFacade().alterarPlano(plano);
+			}
 		} catch (ServiceException e) {
 			e.printStackTrace();
 		}
@@ -54,4 +58,14 @@ public class PlanosRest {
 		}
 	}
 	
+	@Path("/excluir")
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	public void excluir (Plano plano) {
+		try {
+			new HospedagemFacade().excluirPlano(plano);
+		} catch (ServiceException e) {
+			e.printStackTrace();
+		}
+	}
 }

@@ -28,7 +28,11 @@ public class ClienteRest {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void salvar (Cliente cliente) {
 		try {
-			new HospedagemFacade().salvarCliente(cliente);
+			if (cliente.getId() == null) {
+				new HospedagemFacade().salvarCliente(cliente);
+			} else {
+				new HospedagemFacade().alterarCliente(cliente);
+			}
 		} catch (ServiceException e) {
 			e.printStackTrace();
 		}
@@ -47,6 +51,17 @@ public class ClienteRest {
 	@DELETE
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void remove (Cliente cliente) {
+		try {
+			new HospedagemFacade().excluirCliente(cliente);
+		} catch (ServiceException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Path("/excluir")
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	public void excluir (Cliente cliente) {
 		try {
 			new HospedagemFacade().excluirCliente(cliente);
 		} catch (ServiceException e) {

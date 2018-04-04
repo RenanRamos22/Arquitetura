@@ -28,7 +28,11 @@ public class servicoRest {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void salvar (Servico servico) {
 		try {
+			if(servico.getId() == null) {
 			new HospedagemFacade().salvarServico(servico);
+			}else {
+				new HospedagemFacade().alterarServico(servico);
+			}
 		} catch (ServiceException e) {
 			e.printStackTrace();
 		}
@@ -47,6 +51,17 @@ public class servicoRest {
 	@DELETE
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void remover(Servico servico) {
+		try {
+			new HospedagemFacade().excluirServico(servico);
+		} catch (ServiceException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Path("/excluir")
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	public void excluir(Servico servico) {
 		try {
 			new HospedagemFacade().excluirServico(servico);
 		} catch (ServiceException e) {
